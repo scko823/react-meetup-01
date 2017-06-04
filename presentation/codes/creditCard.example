@@ -1,0 +1,3 @@
+func Valid(s string) bool {
+	return !lenTooShort(s) && !containIllegalChar(s) && luhnChecker(convertToCC(s))
+}

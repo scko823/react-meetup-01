@@ -217,8 +217,12 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide>
-          <CodePane lang="go" source={`something`}>
-
+          <CodePane
+						lang="go"
+						source={require("raw-loader!./codes/creditCard.example")}
+						textSize="24px"
+						margin="0"
+					>
           </CodePane>
         </Slide>
 
@@ -237,7 +241,7 @@ export default class Presentation extends React.Component {
 
 
 					<CodeSlide
-						lang="js"
+						lang="jsx"
 						transition={[]}
             textSize={"24px"}
 						ranges={[
