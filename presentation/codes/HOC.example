@@ -1,0 +1,49 @@
+const HOCFactory = (InnerComponent) => class extends React.Component{
+    constructor(props){
+        super(props)
+        this.state={
+            text:"Move the mouse around",
+            red:"127",
+            green:"127",
+            blue:"127"
+        }
+        this.changeColor = this.changeColor.bind(this)
+        this.restoreColor = this.restoreColor.bind(this)
+    }
+    restoreColor(){
+        this.setState({"green": "127"})
+        this.setState({"blue": "127"})
+        this.setState({"red": "127"})
+        this.setState({"text":"Move the mouse around",})
+    }
+    changeColor(e){
+        this.setState({"green": e.clientX+''})
+        this.setState({"blue": e.clientY+''})
+        this.setState({text:"right for green, bottom for blue"})
+    }
+    render(){
+        return <InnerComponent
+            onMouseMove={this.changeColor}
+            onMouseLeave={this.restoreColor}
+            {...this.state} />
+    }
+}
+
+const MyButton = (props) => (
+    <button
+    style={{
+        "top":"0",
+        "left":"0",
+        "width":"255px",
+        "height":"255px",
+        "backgroundColor":{`rgb(${props.red},${props.green-500},${props.blue-150})``}
+    }}
+    onMouseMove={props.onMouseMove}
+    onMouseLeave={props.onMouseLeave}
+    className="btn"
+    >
+    {props.text}
+    </button>
+    )
+
+const DemoBtn = HOCFactory(MyButton);
