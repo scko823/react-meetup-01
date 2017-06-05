@@ -13,7 +13,8 @@ import {
   Appear,
   Quote,
   Slide,
-  Text
+  Text,
+	S
 } from "spectacle";
 
 import Slide1 from './slides/01.jsx'
@@ -120,7 +121,7 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Deck transition={["slide"]} transitionDuration={50} theme={theme}>
-        <Slide transition={["zoom"]} bgColor="primary">
+        <Slide transition={["zoom"]} bgColor="primary" notes="React Dev for 9 months">
           <Heading size={4} fit caps lineHeight={1} textColor="secondary">
             Functional Programming and React
           </Heading>
@@ -129,7 +130,14 @@ export default class Presentation extends React.Component {
           </Text>
         </Slide>
 
-        <Slide bgColor="black" textColor="primary">
+        <Slide bgColor="black"
+					textColor="primary"
+					notes={`With so many competing frameworks, why people pick React
+						<br />
+						What is it good at? and how do we take full advantage of that?
+						<br />
+					`}
+				>
             <Heading size={4} textColor="primary">
                 What does React give us
             </Heading>
@@ -141,7 +149,16 @@ export default class Presentation extends React.Component {
             </Appear>
         </Slide>
 
-        <Slide bgColor="black">
+        <Slide
+					bgColor="black"
+					notes={`
+						<br />
+						so this is a functional component, it doesn't have lifecycle events,
+						it doesn't have its own state.
+						<br />
+						you use it by calling it, and send it your data as prop
+					`}
+				>
             <Heading size={4} textColor="primary">
                 What is declartive ?
             </Heading>
@@ -176,7 +193,7 @@ export default class Presentation extends React.Component {
             (functional) Component
           </Heading>
             <Text textColor="primary">
-              Components let you split the UI into independent, reusable pieces, and think about each piece in isolation.
+              Components let you split the UI into independent, reusable pieces, and <S type="bold">think about each piece in isolation</S>.
               Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
             </Text>
             <Cite>https://facebook.github.io/react/docs/components-and-props.html</Cite>
@@ -191,7 +208,13 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide bgColor="black">
+        <Slide
+					bgColor="black"
+					notes={`
+						Functional programming is a style of declartive programming.
+
+					`}
+				>
           <Text textColor="primary">
             "A pure function does not depend on the global state of the program."
           </Text>
@@ -203,7 +226,12 @@ export default class Presentation extends React.Component {
           </Appear>
         </Slide>
 
-        <Slide>
+        <Slide
+					notes={`
+						As we saw before, React uses component to reuse code, but also encoruage to think about each piece in isolation.
+
+					`}
+				>
           <Heading size={3} textColor="black">
             Why functional programming
           </Heading>
@@ -216,7 +244,16 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
-        <Slide>
+        <Slide
+					notes={`
+						This is the credit card number checker implemented in Go.
+            <br />
+						it is consist of four more functions. Even you dont know Go,
+            you should still get a feel of what it is doing.
+            <br />
+            it also make testing this function into writing 4 smaller tests
+					`}
+				>
           <CodePane
 						lang="go"
 						source={require("raw-loader!./codes/creditCard.example")}
